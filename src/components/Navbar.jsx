@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+	const cartItems = useSelector((state) => state.cart);
 	return (
 		<div
 			style={{
@@ -18,7 +20,7 @@ const Navbar = () => {
 				<Link className='navLink' to='/cart'>
 					Cart
 				</Link>
-				<span className='cartCount'>Cart items:0</span>
+				<span className='cartCount'>Cart items:{cartItems.length}</span>
 			</div>
 		</div>
 	);

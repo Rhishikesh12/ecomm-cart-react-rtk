@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { add } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
 const Products = () => {
+	const dispatch = useDispatch();
+
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -13,6 +17,10 @@ const Products = () => {
 		fetchProducts();
 	}, []);
 
+	const handleAdd = (items) => {
+		dispatch(add(items));
+	};
+
 	return (
 		<div className='productsWrapper'>
 			{data.map((items) => (
@@ -20,7 +28,13 @@ const Products = () => {
 					<img src={items.image} alt='' />
 					<h4>{items.title}</h4>
 					<h5>Price: ${items.price}</h5>
-					<button className='btn'>Add to cart</button>
+					<button
+						className='btn'
+						onClick={() => {
+							handleAdd(items);
+						}}>
+						Add to cart
+					</button>
 				</div>
 			))}
 		</div>
