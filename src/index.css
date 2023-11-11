@@ -42,6 +42,11 @@ img {
 	transition: all 0.3s ease-in-out;
 }
 
+.total {
+	text-align: right;
+	font-size: 25px;
+}
+
 .btn:hover {
 	background: #513282;
 }
